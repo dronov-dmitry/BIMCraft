@@ -172,7 +172,8 @@ fn the_menu_renames_the_row_it_was_opened_on() {
     // Right-click another row: Rename names it, not the row picked before.
     browser_row_node(&h, "Level 2").click_secondary();
     h.run();
-    press(&mut h, "Rename");
+    // The item shows its shortcut beside its name, and that is its label too.
+    press(&mut h, "Rename F2");
     h.run();
     assert_eq!(h.get_by_role_and_label(Role::TextInput, "New name").value().as_deref(), Some("Level 2"));
     rename_with(&mut h, "Second");
